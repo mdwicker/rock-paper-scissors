@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Page Title</title>
+    <meta charset="UTF-8"/>
+</head>
+<body>
+    <script>
+        // introduce the game
+
+        game();
+
+        reportWinner();
+
+
+        // play one round of Rock, Paper, Scissors
+        function playRound(playerSelection, computerSelection) {
+            computerSelection = computerPlay();
+
+        }
+        
+        // play 5 rounds
+        function game() {
+            for (let i = 0; i < 5; i++) {
+                playRound();
+            }
+        }
+
+        // return either Rock, Paper, or Scissors as the computer's selection
+        function computerPlay() {
+            // get a random number from 0 to 2
+            let randomNum = Math.floor(Math.random() * 3);
+            // return either 'rock', 'paper', or 'scissors', depending on the number
+        }
+        
+        // report the overall winner/loser of the game
+        function reportWinner() {
+
+        }
+    </script>
+</body>
+</html>
