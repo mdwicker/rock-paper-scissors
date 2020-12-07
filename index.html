@@ -16,7 +16,6 @@
         // play one round of Rock, Paper, Scissors
         function playRound(playerSelection, computerSelection) {
             computerSelection = computerPlay();
-
         }
         
         // play 5 rounds
@@ -30,7 +29,18 @@
         function computerPlay() {
             // get a random number from 0 to 2
             let randomNum = Math.floor(Math.random() * 3);
+
             // return either 'rock', 'paper', or 'scissors', depending on the number
+            switch (randomNum) {
+                case 0:
+                    return 'rock';
+                
+                case 1:
+                    return 'paper';
+                
+                case 2:
+                    return 'scissors';
+            }
         }
         
         // report the overall winner/loser of the game
