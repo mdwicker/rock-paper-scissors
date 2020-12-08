@@ -24,7 +24,7 @@
             // play 5 rounds
             for (let i = 0; i < 5; i++) {
                 console.log(playRound());
-                console.log();
+                console.log('Computer: ', computerScore, 'Player: ', playerScore);
             }
 
             // report the winner
@@ -92,7 +92,20 @@
 
         // report the overall winner/loser of the game
         function reportWinner() {
- 
+            // check for a tie
+            if (computerScore === playerScore) {
+                console.log('You tied with the computer ', computerScore, ' to ', playerScore, '!');
+            }
+            
+            // check for computer win
+            else if (computerScore > playerScore) {
+                console.log('Better luck next time! The computer beat you ', computerScore, ' to ', playerScore, '.');
+            }
+
+            // otherwise, the player wins!
+            else {
+                console.log('Way to go! You beat the computer ', playerScore, ' to ', computerScore, '.');
+            }
         }
     </script>
 </body>
