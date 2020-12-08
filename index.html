@@ -6,27 +6,36 @@
 </head>
 <body>
     <script>
-        // introduce the game
-        console.log('Time to play Rock, Paper, Scissors! Best to 5 wins.');
 
+        // variables to keep track of score
+        let computerScore = 0;
+        let playerScore = 0;
+        
+        // introduce the game
+        console.log('Time to play Rock, Paper, Scissors! Best of 5.');
+        
         game();
 
-        reportWinner();
-
-
         
-        // play 5 rounds
+        // play a game of Rock, Paper, Scissors
         function game() {
+
+
+            // play 5 rounds
             for (let i = 0; i < 5; i++) {
-                playRound();
+                console.log(playRound());
+                console.log();
             }
+
+            // report the winner
+            reportWinner();
         }
 
         // play one round of Rock, Paper, Scissors
         function playRound(playerSelection, computerSelection) {
             computerSelection = computerPlay();
             playerSelection = playerPlay();
-            console.log('Computer: ', computerSelection, ', Player: ', playerSelection);
+            console.log('You chose ', playerSelection, ', the computer chose ', computerSelection);
 
             // if computerSelection and playerSelection are the same, declare a tie
 
@@ -36,11 +45,13 @@
 
             // if computer has rock and player has scissors, or computer has paper and player has rock, or computer has scissors and player has rock, computer wins.
             else if ( (computerSelection === 'rock' && playerSelection === 'scissors') || (computerSelection === 'paper' && playerSelection === 'rock') || (computerSelection === 'scissors' && playerSelection === 'paper') ) {
+                computerScore++;
                 return 'Sorry, you lose this round.';
             }
             
             // otherwise, the player wins the round
             else {
+                playerScore++;
                 return 'Way to go, you win this round!';
             }
         }
@@ -81,7 +92,7 @@
 
         // report the overall winner/loser of the game
         function reportWinner() {
-
+ 
         }
     </script>
 </body>
