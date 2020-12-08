@@ -5,12 +5,7 @@
     <meta charset="UTF-8"/>
 </head>
 <body>
-    <script>
-
-        // variables to keep track of score
-        let computerScore = 0;
-        let playerScore = 0;
-        
+    <script>     
         // introduce the game
         console.log('Time to play Rock, Paper, Scissors! Best of 5.');
         
@@ -19,40 +14,51 @@
         
         // play a game of Rock, Paper, Scissors
         function game() {
-
+            // variables to keep track of score
+            let winner;
+            let computerScore = 0;
+            let playerScore = 0;    
 
             // play 5 rounds
             for (let i = 0; i < 5; i++) {
-                console.log(playRound());
-                console.log('Computer: ', computerScore, 'Player: ', playerScore);
+                winner = playRound();
+
+                if (winner === 'computer') {
+                    computerScore++;
+                } else if (winner === 'player') {
+                    playerScore++;
+                }
+
+                console.log('Computer: ' + computerScore + ' Player: ' + playerScore + '.');
             }
 
             // report the winner
-            reportWinner();
+            reportWinner(computerScore, playerScore);
         }
 
         // play one round of Rock, Paper, Scissors
         function playRound(playerSelection, computerSelection) {
             computerSelection = computerPlay();
             playerSelection = playerPlay();
-            console.log('You chose ', playerSelection, ', the computer chose ', computerSelection);
+            console.log('You chose ' + playerSelection + ', the computer chose ' + computerSelection);
 
             // if computerSelection and playerSelection are the same, declare a tie
 
             if (computerSelection === playerSelection) {
-                return 'You tie.';
+                console.log('You tie.');
+                return 'tie';
             }
 
             // if computer has rock and player has scissors, or computer has paper and player has rock, or computer has scissors and player has rock, computer wins.
             else if ( (computerSelection === 'rock' && playerSelection === 'scissors') || (computerSelection === 'paper' && playerSelection === 'rock') || (computerSelection === 'scissors' && playerSelection === 'paper') ) {
-                computerScore++;
-                return 'Sorry, you lose this round.';
+                console.log('Sorry, you lose this round.');
+                return 'computer';
             }
             
             // otherwise, the player wins the round
             else {
-                playerScore++;
-                return 'Way to go, you win this round!';
+                console.log('Way to go, you win this round!');
+                return 'player';
             }
         }
 
@@ -91,20 +97,20 @@
         }
 
         // report the overall winner/loser of the game
-        function reportWinner() {
+        function reportWinner(computerScore, playerScore) {
             // check for a tie
             if (computerScore === playerScore) {
-                console.log('You tied with the computer ', computerScore, ' to ', playerScore, '!');
+                console.log('You tied with the computer ' + computerScore + ' to ' + playerScore + '!');
             }
             
             // check for computer win
             else if (computerScore > playerScore) {
-                console.log('Better luck next time! The computer beat you ', computerScore, ' to ', playerScore, '.');
+                console.log('Better luck next time! The computer beat you ' + computerScore + ' to ' + playerScore + '.');
             }
 
             // otherwise, the player wins!
             else {
-                console.log('Way to go! You beat the computer ', playerScore, ' to ', computerScore, '.');
+                console.log('Way to go! You beat the computer ' + playerScore + ' to ' + computerScore + '.');
             }
         }
     </script>
