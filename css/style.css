@@ -1,0 +1,20 @@
+.wrapper {
+    max-width:960 px;
+    padding-right: 10px;
+    padding-left: 10px;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.btn {
+    margin: 20px;
+    background-color: rgb(210, 170, 110);
+    border-color:rgb(210, 170, 110);
+    border-radius: 10px;
+    width: 200px;
+    height: 100px;
+    font-size: 20px;
+}
