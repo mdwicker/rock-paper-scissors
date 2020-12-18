@@ -35,7 +35,7 @@ function game() {
 function playRound(e) {
     let computerSelection = computerPlay();
     playerSelection = this.id;
-    console.log('You chose ' + playerSelection + ', the computer chose ' + computerSelection);
+    console.log(`You chose ${playerSelection}, the computer chose ${computerSelection}`);
 
     // if computerSelection and playerSelection are the same, declare a tie
 
@@ -75,21 +75,6 @@ function computerPlay() {
     }
 }
 
-// get the player to input either rock, paper, or scissors
-function playerPlay() {
-    let selection = prompt('Rock, paper, or scissors?');
-
-    // tidy up the input
-    selection = selection.trim();
-    selection = selection.toLowerCase();
-
-    // if the input isn't rock, paper, or scissors, get another input
-    if (selection === 'rock' || selection === 'paper' || selection === 'scissors') {
-        return selection;
-    } else {
-        playerPlay();
-    }
-}
 
 // report the overall winner/loser of the game
 function reportWinner(computerScore, playerScore) {
