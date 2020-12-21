@@ -1,11 +1,14 @@
+// global variables to track the score
+let computerScore = 0;
+let playerScore = 0;
+
+
+// whenever a button is clicked, play a round
 const buttons = document.querySelectorAll('button');
 
 buttons.forEach(button => {
     button.addEventListener('click', playRound)
 });
-
-        
-
 
 
 // play a game of Rock, Paper, Scissors
@@ -31,30 +34,33 @@ function game() {
     reportWinner(computerScore, playerScore);
 }
 
-// play one round of Rock, Paper, Scissors, returning the winner
+// play one round of Rock, Paper, Scissors
 function playRound(e) {
     let computerSelection = computerPlay();
-    playerSelection = this.id;
-    console.log(`You chose ${playerSelection}, the computer chose ${computerSelection}`);
+    let playerSelection = this.id;
+
+    document.getElementById('round-choices').textContent = `You chose ${playerSelection}, the computer chose ${computerSelection}.`;
 
     // if computerSelection and playerSelection are the same, declare a tie
-
     if (computerSelection === playerSelection) {
-        console.log('You tie.');
-        return 'tie';
+        document.getElementById('round-results').textContent = 'You tie.';
     }
 
     // if computer has rock and player has scissors, or computer has paper and player has rock, or computer has scissors and player has rock, computer wins.
     else if ( (computerSelection === 'rock' && playerSelection === 'scissors') || (computerSelection === 'paper' && playerSelection === 'rock') || (computerSelection === 'scissors' && playerSelection === 'paper') ) {
-        console.log('Sorry, you lose this round.');
-        return 'computer';
+        document.getElementById('round-results').textContent = 'Sorry, you lose this round.';
+        computerScore++;
     }
     
     // otherwise, the player wins the round
     else {
-        console.log('Way to go, you win this round!');
-        return 'player';
+        document.getElementById('round-results').textContent = 'Way to go, you win this round!';
+        playerScore++;
     }
+
+    document.getElementById('player-score').textContent = playerScore;
+    document.getElementById('computer-score').textContent = computerScore;
+
 }
 
 // return either Rock, Paper, or Scissors as the computer's selection

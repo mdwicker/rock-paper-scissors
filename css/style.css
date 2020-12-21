@@ -18,3 +18,21 @@
     height: 100px;
     font-size: 20px;
 }
+
+div.round-results {
+    text-align: center;
+}
+
+div.overall-score {
+    display: flex;
+}
+
+div.score-card {
+    margin: 0px 100px;
+}
+
+p.results {
+    font-size: 75px;
+    margin: 0px;
+    text-align: center;
+}
