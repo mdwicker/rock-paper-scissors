@@ -4,35 +4,15 @@ let playerScore = 0;
 
 
 // whenever a button is clicked, play a round
-const buttons = document.querySelectorAll('button');
+const buttons = document.querySelectorAll('button.selection');
 
 buttons.forEach(button => {
     button.addEventListener('click', playRound)
 });
 
+const newGame = document.getElementById('new-game');
+newGame.addEventListener('click', resetGame);
 
-// play a game of Rock, Paper, Scissors
-function game() {
-    // variables to keep track of score
-    let winner;
-    let computerScore = 0;
-    let playerScore = 0;    
-
-    // play 5 rounds
-    
-    winner = playRound();
-
-    if (winner === 'computer') {
-        computerScore++;
-    } else if (winner === 'player') {
-        playerScore++;
-    }
-
-    console.log('Computer: ' + computerScore + ' Player: ' + playerScore + '.');
-
-    // report the winner
-    reportWinner(computerScore, playerScore);
-}
 
 // play one round of Rock, Paper, Scissors
 function playRound(e) {
@@ -81,21 +61,11 @@ function computerPlay() {
     }
 }
 
-
-// report the overall winner/loser of the game
-function reportWinner(computerScore, playerScore) {
-    // check for a tie
-    if (computerScore === playerScore) {
-        console.log('You tied with the computer ' + computerScore + ' to ' + playerScore + '!');
-    }
-    
-    // check for computer win
-    else if (computerScore > playerScore) {
-        console.log('Better luck next time! The computer beat you ' + computerScore + ' to ' + playerScore + '.');
-    }
-
-    // otherwise, the player wins!
-    else {
-        console.log('Way to go! You beat the computer ' + playerScore + ' to ' + computerScore + '.');
-    }
+function resetGame() {
+    computerScore = 0;
+    playerScore = 0;
+    document.getElementById('round-choices').textContent = 'Make your choice to start playing.';
+    document.getElementById('round-results').textContent = 'First to 3 wins.';
+    document.getElementById('player-score').textContent = playerScore;
+    document.getElementById('computer-score').textContent = computerScore;
 }

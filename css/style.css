@@ -1,38 +1,81 @@
-.wrapper {
-    max-width:960 px;
-    padding-right: 10px;
-    padding-left: 10px;
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+@import url("https://fonts.googleapis.com/css?family=Uncial+Antiqua&display=swap");
+@import url("https://fonts.googleapis.com/css?family=El Messiri&display=swap");
+
+body {
+  background-image: url(https://cdn.pixabay.com/photo/2017/03/12/00/27/background-2136168_1280.jpg);
+  background-size: cover;
 }
 
-.btn {
-    margin: 20px;
-    background-color: rgb(210, 170, 110);
-    border-color:rgb(210, 170, 110);
-    border-radius: 10px;
-    width: 200px;
-    height: 100px;
-    font-size: 20px;
+p {
+  margin: 15px 0px;
+  font-size: 12px;
+}
+
+h2 {
+  font-size: 30px;
+}
+
+.wrapper {
+  max-width: 960 px;
+  padding-right: 10px;
+  padding-left: 10px;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+button {
+  background-color: rgba(250, 200, 90, 0.3);
+  border-radius: 2px;
+  border: 5px solid rgb(50, 22, 14);
+  box-shadow: 0 0 1px 2px rgb(50, 22, 14);
+  font-family: "Uncial Antiqua", sans-serif;
+}
+
+button.selection {
+  margin: 20px;
+  width: 200px;
+  height: 75px;
+  font-size: 30px;
+}
+
+button#new-game {
+  width: 400px;
+  height: 60px;
+  font-size: 30px;
+  margin-top: 30px;
+  border-color: rgb(160, 75, 65);
+  box-shadow: 0 0 1px 2px rgb(160, 75, 65);
 }
 
 div.round-results {
-    text-align: center;
+  text-align: center;
 }
 
 div.overall-score {
-    display: flex;
+  display: flex;
 }
 
 div.score-card {
-    margin: 0px 100px;
+  margin: 0px 100px 100px 100px;
+  text-align: center;
 }
 
-p.results {
-    font-size: 75px;
-    margin: 0px;
-    text-align: center;
+p.results.score-card {
+  font-size: 150px;
+  margin: 30px 0px 0px 0px;
+  text-align: center;
+  line-height: 80px;
+}
+
+.results {
+  font-family: "Uncial Antiqua";
+}
+
+#round-choices,
+#round-results {
+  font-size: 30px;
+  font-family: "El Messiri";
 }
