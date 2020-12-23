@@ -14,9 +14,13 @@ buttons.forEach(button => {
     button.addEventListener('click', playRound)
 });
 
+// when New Game is clicked, reset the game
 const newGameButton = document.getElementById('new-game');
 newGameButton.addEventListener('click', newGame);
 
+// when "You" is clicked, go into lizard-spock mode
+const lizardSpockMode = document.getElementById('lizard-spock');
+lizardSpockMode.addEventListener('click', enterLizardSpockMode);
 
 // play one round of Rock, Paper, Scissors
 function playRound(e) {
@@ -92,4 +96,11 @@ function newGame() {
     document.getElementById('computer-score').textContent = computerScore;
     divGame.style.display = 'flex';
     endGame.style.display = 'none';
+}
+
+function enterLizardSpockMode() {
+    const lizardSpockItems = document.querySelectorAll('.lizard-spock');
+    lizardSpockItems.forEach (lizardSpockItem => {
+        lizardSpockItem.style.display = 'block';}
+        );
 }
