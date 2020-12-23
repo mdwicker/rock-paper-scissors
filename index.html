@@ -9,37 +9,38 @@
 
 <body>
 <div class="wrapper">
+    <div id = "endgame">
+    </div>
 
     <div id="game">
+        <div class="overall-score">
+            <div class="score-card">
+                <h2 class="results score-card">You</h2>
+                <p class="results score-card" id="player-score">0</p>
+            </div>
 
-    <div class="overall-score">
-        <div class="score-card">
-            <h2 class="results score-card">You</h2>
-            <p class="results score-card" id="player-score">0</p>
+            <div class="score-card">
+                <h2 class="results score-card">Computer</h2>
+                <p class="results score-card" id="computer-score">0</p>
+            </div>
         </div>
 
-        <div class="score-card">
-            <h2 class="results score-card">Computer</h2>
-            <p class="results score-card" id="computer-score">0</p>
+        <div class="round-results">
+            <p class="results" id="round-choices">Make your choice to start playing.</p>
+            <p class="results" id="round-results">First to 3 wins.</p>
         </div>
+
+        <div class="buttons">
+            <button class="btn selection" id="rock">rock</button>
+            <button class="btn selection" id="paper">paper</button>
+            <button class="btn selection" id="scissors">scissors</button>
+        </div>        
     </div>
 
-    <div class="round-results">
-        <p class="results" id="round-choices">Make your choice to start playing.</p>
-        <p class="results" id="round-results">First to 3 wins.</p>
-    </div>
-
-    <div class="buttons">
-        <button class="btn selection" id="rock">rock</button>
-        <button class="btn selection" id="paper">paper</button>
-        <button class="btn selection" id="scissors">scissors</button>
-    </div>
-
-    <div class="new-game">
+    <div id="new-game">
         <button id="new-game">new game</button>
     </div>
-    
-    </div>
+
 </div>
 </body>
 

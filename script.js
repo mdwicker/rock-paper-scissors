@@ -2,6 +2,10 @@
 let computerScore = 0;
 let playerScore = 0;
 
+// div elements to toggle game vs endgame page
+const divGame = document.getElementById('game');
+const endGame = document.getElementById('endgame');
+
 
 // whenever a button is clicked, play a round
 const buttons = document.querySelectorAll('button.selection');
@@ -10,8 +14,8 @@ buttons.forEach(button => {
     button.addEventListener('click', playRound)
 });
 
-const newGame = document.getElementById('new-game');
-newGame.addEventListener('click', resetGame);
+const newGameButton = document.getElementById('new-game');
+newGameButton.addEventListener('click', newGame);
 
 
 // play one round of Rock, Paper, Scissors
@@ -37,10 +41,16 @@ function playRound(e) {
         document.getElementById('round-results').textContent = 'Way to go, you win this round!';
         playerScore++;
     }
-
     document.getElementById('player-score').textContent = playerScore;
     document.getElementById('computer-score').textContent = computerScore;
 
+    // check for the end of the game
+    if (playerScore === 3) {
+        gameOver('player');
+    }
+    else if (computerScore === 3) {
+        gameOver('computer');
+    }
 }
 
 // return either Rock, Paper, or Scissors as the computer's selection
@@ -61,11 +71,25 @@ function computerPlay() {
     }
 }
 
-function resetGame() {
+function gameOver(winner) {
+    if (winner === 'player') {
+        endGame.textContent = `You beat the computer ${playerScore} to ${computerScore}!`;
+    }
+    else if (winner === 'computer') {
+        endGame.textContent = `Whoops, you lost ${playerScore} to ${computerScore}.`;
+    }
+    
+    divGame.style.display = 'none';
+    endGame.style.display = 'flex';
+}
+
+function newGame() {
     computerScore = 0;
     playerScore = 0;
     document.getElementById('round-choices').textContent = 'Make your choice to start playing.';
     document.getElementById('round-results').textContent = 'First to 3 wins.';
     document.getElementById('player-score').textContent = playerScore;
     document.getElementById('computer-score').textContent = computerScore;
+    divGame.style.display = 'flex';
+    endGame.style.display = 'none';
 }
