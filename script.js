@@ -1,6 +1,7 @@
-// global variables to track the score
+// global variables to track the score, etc
 let computerScore = 0;
 let playerScore = 0;
+let gameCount = 0;
 
 // global variable to check if the game is paused
 let gamePaused = false;
@@ -168,12 +169,19 @@ function getFightReport(firstSelection, secondSelection) {
 
 function gameOver(winner) {
     gamePaused = true;
+    gameCount++;
+    endGame.style.fontSize = '50px';
 
     if (winner === 'player') {
         endGame.textContent = `Game over.\r\n You beat the computer ${playerScore} to ${computerScore}!`;
     }
     else if (winner === 'computer') {
         endGame.textContent = `Game over.\r\nYou lost ${playerScore} to ${computerScore}.`;
+    }
+
+    if (gameCount === 10) {
+        endGame.textContent += "\r\n \r\n You've been playing for a while now. \r\n\r\n If you want a bit of a change,\r\n next time check out the score tally labels."
+        endGame.style.fontSize = '30px';
     }
     
     divScore.classList.toggle('invisible');
