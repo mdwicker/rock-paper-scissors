@@ -54,7 +54,7 @@ div#new-game {
 }
 
 div#endgame {
-  display: none;
+  display: flex;
   height: 480px;
   margin-top: 75px;
   font-family: "Uncial Antiqua", sans-serif;
@@ -122,5 +122,9 @@ a#lizard-spock:hover {
 }
 
 .lizard-spock {
-  display: none;
+  display: block;
+}
+
+.invisible {
+  display: none !important;
 }

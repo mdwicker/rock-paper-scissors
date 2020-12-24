@@ -18,9 +18,10 @@ buttons.forEach(button => {
 const newGameButton = document.getElementById('new-game');
 newGameButton.addEventListener('click', newGame);
 
-// when "You" is clicked, go into lizard-spock mode
+// when "You" is clicked, toggle lizard-spock mode
 const lizardSpockMode = document.getElementById('lizard-spock');
-lizardSpockMode.addEventListener('click', enterLizardSpockMode);
+const lizardSpockItems = document.querySelectorAll('.lizard-spock');
+lizardSpockMode.addEventListener('click', toggleLizardSpockMode);
 
 // play one round of Rock, Paper, Scissors
 function playRound(e) {
@@ -83,8 +84,8 @@ function gameOver(winner) {
         endGame.textContent = `Whoops, you lost ${playerScore} to ${computerScore}.`;
     }
     
-    divGame.style.display = 'none';
-    endGame.style.display = 'flex';
+    divGame.classList.toggle('invisible');
+    endGame.classList.toggle('invisible');
 }
 
 function newGame() {
@@ -94,13 +95,12 @@ function newGame() {
     document.getElementById('round-results').textContent = 'First to 3 wins.';
     document.getElementById('player-score').textContent = playerScore;
     document.getElementById('computer-score').textContent = computerScore;
-    divGame.style.display = 'flex';
-    endGame.style.display = 'none';
+    divGame.classList.remove('invisible');
+    endGame.classList.add('invisible');
 }
 
-function enterLizardSpockMode() {
-    const lizardSpockItems = document.querySelectorAll('.lizard-spock');
+function toggleLizardSpockMode() {
     lizardSpockItems.forEach (lizardSpockItem => {
-        lizardSpockItem.style.display = 'block';}
+        lizardSpockItem.classList.toggle('invisible');}
         );
 }
