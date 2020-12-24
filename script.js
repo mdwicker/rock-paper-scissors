@@ -19,6 +19,7 @@ const newGameButton = document.getElementById('new-game');
 newGameButton.addEventListener('click', newGame);
 
 // when "You" is clicked, toggle lizard-spock mode
+let lizardSpock = false;
 const lizardSpockMode = document.getElementById('lizard-spock');
 const lizardSpockItems = document.querySelectorAll('.lizard-spock');
 lizardSpockMode.addEventListener('click', toggleLizardSpockMode);
@@ -30,22 +31,24 @@ function playRound(e) {
 
     document.getElementById('round-choices').textContent = `You chose ${playerSelection}, the computer chose ${computerSelection}.`;
 
-    // if computerSelection and playerSelection are the same, declare a tie
-    if (computerSelection === playerSelection) {
-        document.getElementById('round-results').textContent = 'You tie.';
-    }
+    winner = checkRoundWinner(computerSelection, playerSelection);
 
-    // if computer has rock and player has scissors, or computer has paper and player has rock, or computer has scissors and player has rock, computer wins.
-    else if ( (computerSelection === 'rock' && playerSelection === 'scissors') || (computerSelection === 'paper' && playerSelection === 'rock') || (computerSelection === 'scissors' && playerSelection === 'paper') ) {
+    // announce round winner
+    if (winner === 'tie') {
+        document.getElementById('round-results').textContent = 'Nothing happens.';
+    }
+    else if (winner === 'computer') {
         document.getElementById('round-results').textContent = 'Sorry, you lose this round.';
         computerScore++;
     }
-    
-    // otherwise, the player wins the round
-    else {
+    else if (winner === 'player') {
         document.getElementById('round-results').textContent = 'Way to go, you win this round!';
         playerScore++;
     }
+    else {
+        document.getElementById('round-results').textContent = 'Glitch in the Matrix. Hmm....';
+    }
+
     document.getElementById('player-score').textContent = playerScore;
     document.getElementById('computer-score').textContent = computerScore;
 
@@ -58,12 +61,18 @@ function playRound(e) {
     }
 }
 
-// return either Rock, Paper, or Scissors as the computer's selection
+// return the computer's selection
 function computerPlay() {
-    // get a random number from 0 to 2
-    let randomNum = Math.floor(Math.random() * 3);
+    // get a random number from 0 to 2, unless it's lizard spock mode
+    let randomNum;
+    if (!lizardSpock) {
+        randomNum = Math.floor(Math.random() * 3);
+    }
+    else {
+        randomNum = Math.floor(Math.random() * 5);
+    }
 
-    // return either 'rock', 'paper', or 'scissors', depending on the number
+    // return either 'rock', 'paper', or 'scissors' (or lizard or spock), depending on the number
     switch (randomNum) {
         case 0:
             return 'rock';
@@ -73,6 +82,57 @@ function computerPlay() {
         
         case 2:
             return 'scissors';
+        
+        case 3: 
+            return 'lizard';
+        
+        case 4:
+            return 'spock';
+    }
+}
+
+function checkRoundWinner(computerSelection, playerSelection) {
+    // if they are the same, it's a tie
+    if (computerSelection === playerSelection) {
+        return 'tie';
+    }
+
+    // otherwise, check who wins for each possible computer choice
+    switch (computerSelection) {
+        // if the computer chose rock, then they will beat lizard or scissors
+        case 'rock':
+            if ( (playerSelection === 'lizard') || (playerSelection === 'scissors') ) {
+                return 'computer';
+            }
+            return 'player';
+
+        // if the computer chose paper, they beat rock and spock
+        case 'paper':
+            if ( (playerSelection === 'rock') || (playerSelection === 'spock') ) {
+                return 'computer';
+            }
+            return 'player';
+        
+        // if the computer chose scissors, they beat paper and lizard
+        case 'scissors':
+            if ( (playerSelection === 'paper') || (playerSelection === 'lizard') ) {
+                return 'computer';
+            }
+            return 'player';
+        
+        // if the computer chose lizard, they beat spock and paper
+        case 'lizard':
+            if ( (playerSelection === 'spock') || (playerSelection === 'paper') ) {
+                return 'computer';
+            }
+            return 'player';
+        
+        // if the computer chose spock, they beat rock and scissors
+        case 'spock':
+            if ( (playerSelection === 'rock') || (playerSelection === 'scissors') ) {
+                return 'computer';
+            }
+            return 'player';
     }
 }
 
@@ -103,4 +163,5 @@ function toggleLizardSpockMode() {
     lizardSpockItems.forEach (lizardSpockItem => {
         lizardSpockItem.classList.toggle('invisible');}
         );
+    lizardSpock = !lizardSpock;
 }
