@@ -27,7 +27,7 @@ div#game {
   margin-top: 75px;
 }
 
-div.overall-score {
+div#overall-score {
   display: flex;
   justify-content: space-between;
   width: 50%;
@@ -55,12 +55,13 @@ div#new-game {
 
 div#endgame {
   display: flex;
-  height: 480px;
-  margin-top: 75px;
+  height: 260px;
   font-family: "Uncial Antiqua", sans-serif;
   font-size: 50px;
   justify-content: center;
   align-items: center;
+  white-space: pre;
+  text-align: center;
 }
 
 button {
